@@ -1,0 +1,105 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000; 
+    color: #fff; 
+}
+
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #222; /* Dark gray */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+
+nav {
+    text-align: center;
+    background-color: #333;
+    padding: 10px 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.2rem;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+
+.car {
+    background-color: #111;
+    border: 1px solid #444;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 300px;
+    text-align: center;
+    padding: 15px;
+}
+
+.car img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.car h3 {
+    margin: 15px 0 10px;
+    font-size: 1.5rem;
+}
+
+.car p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.car button {
+    background-color: #f00; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.car button:hover {
+    background-color: #c00;
+}
+
+
+.car-description .more-text {
+    display: none; /* Hide the extra text by default */
+}
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #222;
+    font-size: 1rem;
+    margin-top: 20px;
+}
