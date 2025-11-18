@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+}
+
+.hero {
+    text-align: center;
+    padding: 25px;
+    background: #111;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    background: #444;
+    padding: 10px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #ff4500;
+}
+
+/* Background image for the booking section */
+.booking-wrapper {
+    background: url("supercar-bg.jpg") center/cover no-repeat;
+    min-height: 100vh;
+    padding: 50px 0;
+}
+
+.booking-form {
+    background: rgba(0, 0, 0, 0.85);
+    padding: 25px;
+    max-width: 500px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 15px black;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 5px;
+    border: none;
+    background: #222;
+    color: white;
+}
+
+.booking-form button {
+    padding: 12px;
+    border-radius: 5px;
+    font-weight: bold;
+}
