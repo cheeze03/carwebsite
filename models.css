@@ -86,6 +86,21 @@ nav a:hover {
     cursor: pointer;
 }
 
+.test-drive-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.test-drive-link:hover {
+    background-color: darkred;
+}
+
 .car button:hover {
     background-color: #c00;
 }
@@ -103,3 +118,4 @@ footer {
     font-size: 1rem;
     margin-top: 20px;
 }
+
