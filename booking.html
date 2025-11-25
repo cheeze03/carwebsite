@@ -110,5 +110,40 @@ function showPrice() {
 }
 </script>
 
+<script>
+// --- Existing price function ---
+function showPrice() {
+    const prices = {
+        "1968 Ford Mustang GT500 (Eleanor)": 1000,
+        "Lamborghini Aventador": 1800,
+        "Rolls Royce Ghost Black Badge": 3500,
+        "Mercedes Benz E63s AMG": 1200,
+        "Porsche Carrera GT": 2500,
+        "Bentley Bentayga": 2750
+    };
+
+    let model = document.getElementById("car_model").value;
+    document.getElementById("quotation").value = prices[model] ? prices[model] : "";
+}
+
+
+// --- NEW: Auto-select car model when coming from models.html ---
+window.onload = function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedCar = urlParams.get("car");
+
+    if (selectedCar) {
+        const dropdown = document.getElementById("car_model");
+        dropdown.value = selectedCar;
+        showPrice(); // Auto-fill quotation
+    }
+};
+</script>
+
 </body>
 </html>
+
+
+</body>
+</html>
+
