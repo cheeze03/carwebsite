@@ -38,29 +38,197 @@ body {
     padding: 50px 0;
 }
 
-.booking-form {
+/* Main form container */
+.booking-wrapper form {
     background: rgba(0, 0, 0, 0.85);
-    padding: 25px;
-    max-width: 500px;
+    padding: 30px;
+    max-width: 600px;
     margin: auto;
     border-radius: 10px;
-    box-shadow: 0 0 15px black;
+    box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
+    border: 1px solid #333;
 }
 
-.booking-form input,
-.booking-form select,
-.booking-form textarea {
+/* Form sections */
+.form-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background: rgba(30, 30, 30, 0.7);
+    transition: all 0.3s ease;
+}
+
+.form-section:hover {
+    border-color: #ff4500;
+    box-shadow: 0 0 10px rgba(255, 69, 0, 0.2);
+}
+
+.form-section h3 {
+    color: #ff4500;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #ff4500;
+    padding-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+/* Form inputs */
+.booking-wrapper input,
+.booking-wrapper select,
+.booking-wrapper textarea {
     width: 100%;
-    padding: 10px;
-    margin-top: 8px;
+    padding: 12px;
+    margin: 8px 0 15px 0;
     border-radius: 5px;
-    border: none;
+    border: 1px solid #555;
     background: #222;
     color: white;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
 }
 
-.booking-form button {
-    padding: 12px;
+.booking-wrapper input:focus,
+.booking-wrapper select:focus,
+.booking-wrapper textarea:focus {
+    outline: none;
+    border-color: #ff4500;
+    box-shadow: 0 0 8px rgba(255, 69, 0, 0.3);
+    background: #333;
+}
+
+.booking-wrapper textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Price display section */
+.price-display {
+    background: rgba(40, 167, 69, 0.1);
+    padding: 1rem;
     border-radius: 5px;
+    border-left: 4px solid #28a745;
+    margin: 10px 0;
+}
+
+.price-display label {
     font-weight: bold;
+    color: #28a745;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#quotation {
+    background: #155724;
+    border: 1px solid #28a745;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Submit button */
+.submit-btn {
+    background: linear-gradient(135deg, #ff4500, #ff6b35);
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(135deg, #e03d00, #ff5a2b);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Placeholder styling */
+::placeholder {
+    color: #888;
+    opacity: 1;
+}
+
+/* Select dropdown arrow */
+.booking-wrapper select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'><path fill='%23fff' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px;
+    padding-right: 35px;
+}
+
+/* Labels */
+.booking-wrapper label {
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .booking-wrapper {
+        padding: 20px 15px;
+    }
+    
+    .booking-wrapper form {
+        padding: 20px;
+        margin: 0 10px;
+    }
+    
+    .form-section {
+        padding: 1rem;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+    }
+    
+    .nav-links a {
+        margin: 5px 10px;
+    }
+}
+
+/* Animation for form sections */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-section {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.form-section:nth-child(1) { animation-delay: 0.1s; }
+.form-section:nth-child(2) { animation-delay: 0.2s; }
+.form-section:nth-child(3) { animation-delay: 0.3s; }
+.form-section:nth-child(4) { animation-delay: 0.4s; }
+
+/* Number input spinner styling */
+.booking-wrapper input[type="number"]::-webkit-inner-spin-button,
+.booking-wrapper input[type="number"]::-webkit-outer-spin-button {
+    opacity: 0.6;
+}
+
+.booking-wrapper input[type="number"]:hover::-webkit-inner-spin-button,
+.booking-wrapper input[type="number"]:hover::-webkit-outer-spin-button {
+    opacity: 1;
 }
