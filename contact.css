@@ -18,7 +18,7 @@ header h1 {
     font-size: 2.5rem;
 }
 
-/* Enhanced Navigation Bar - NO ORANGE HIGHLIGHT */
+/* Fixed Horizontal Navigation Bar */
 nav {
     background: linear-gradient(135deg, #222, #444);
     padding: 0;
@@ -42,6 +42,7 @@ nav {
 .nav-links li {
     margin: 0;
     padding: 0;
+    display: inline-block;
 }
 
 .nav-links a {
@@ -55,16 +56,15 @@ nav {
     position: relative;
     border-radius: 0;
     margin: 0;
+    white-space: nowrap;
 }
 
-/* REMOVED ALL HOVER EFFECTS THAT CAUSE ORANGE */
 .nav-links a:hover {
-    color: #fff; /* Keep text white on hover */
-    background: rgba(255, 255, 255, 0.1); /* Light grey background instead of orange */
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
     transform: translateY(0);
 }
 
-/* REMOVED THE ORANGE UNDERLINE ANIMATION */
 .nav-links a::before {
     content: '';
     position: absolute;
@@ -72,13 +72,13 @@ nav {
     left: 50%;
     width: 0;
     height: 3px;
-    background: transparent; /* Changed from #ff4500 to transparent */
+    background: transparent;
     transition: all 0.3s ease;
     transform: translateX(-50%);
 }
 
 .nav-links a:hover::before {
-    width: 0; /* No underline on hover */
+    width: 0;
 }
 
 /* Background image for contact section */
@@ -262,15 +262,16 @@ footer {
     
     .nav-links {
         flex-wrap: wrap;
-        padding: 5px;
+        padding: 8px;
+        justify-content: space-around;
     }
     
     .nav-links a {
-        padding: 15px 20px;
+        padding: 12px 15px;
         margin: 2px;
         font-size: 14px;
         flex: 1;
-        min-width: 110px;
+        min-width: auto;
         text-align: center;
     }
     
@@ -281,15 +282,35 @@ footer {
 
 @media (max-width: 480px) {
     .nav-links {
-        flex-direction: row;
         flex-wrap: wrap;
+        padding: 5px;
+        justify-content: space-between;
     }
     
     .nav-links a {
-        padding: 12px 15px;
+        padding: 10px 8px;
         margin: 1px;
-        font-size: 13px;
-        min-width: 90px;
+        font-size: 12px;
+        flex: 1;
+        min-width: 0;
+        text-align: center;
+    }
+    
+    .nav-links li {
+        flex-basis: 33%;
+        text-align: center;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 360px) {
+    .nav-links a {
+        padding: 8px 5px;
+        font-size: 11px;
+    }
+    
+    .nav-links li {
+        flex-basis: 50%;
     }
 }
 
