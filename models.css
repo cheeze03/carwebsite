@@ -1,4 +1,4 @@
-/* models.css - Complete CSS with Gallery Styles and Responsive Navigation */
+/* models.css - Complete CSS with Gallery Styles and Improved Mobile Navigation */
 
 body {
     font-family: Arial, sans-serif;
@@ -19,7 +19,7 @@ header h1 {
     font-size: 2.5rem;
 }
 
-/* Navigation Styles - Improved for Mobile */
+/* Navigation Styles - Horizontal on all screens */
 nav {
     text-align: center;
     background-color: #333;
@@ -27,22 +27,34 @@ nav {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 15px;
+    position: relative;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     padding: 8px 15px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
     white-space: nowrap;
+    flex-shrink: 0;
 }
 
 nav a:hover {
     background-color: #444;
     text-decoration: none;
+}
+
+/* Ensure booking link is visually centered */
+nav a[href="booking.html"] {
+    font-weight: bold;
+    background-color: #f00;
+}
+
+nav a[href="booking.html"]:hover {
+    background-color: #c00;
 }
 
 .container {
@@ -247,13 +259,23 @@ footer {
 /* Responsive adjustments */
 @media (max-width: 768px) {
     nav {
-        padding: 8px 0;
+        padding: 8px 5px;
         gap: 8px;
+        overflow-x: auto;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch;
     }
     
     nav a {
-        font-size: 1rem;
+        font-size: 0.95rem;
         padding: 6px 12px;
+        flex-shrink: 0;
+    }
+    
+    /* Center the navigation container */
+    nav::after {
+        content: '';
+        flex: 1;
     }
     
     .modal-nav {
@@ -287,32 +309,35 @@ footer {
     header h1 {
         font-size: 2rem;
     }
+    
+    .car {
+        width: 100%;
+        max-width: 350px;
+    }
 }
 
 @media (max-width: 480px) {
     nav {
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-        padding: 5px 0;
+        padding: 6px 5px;
+        gap: 6px;
     }
     
     nav a {
-        width: 90%;
-        text-align: center;
-        padding: 8px 5px;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+        padding: 5px 10px;
     }
     
     .car {
         width: 100%;
         margin-bottom: 20px;
+        max-width: 100%;
     }
     
     .container {
         flex-direction: column;
         align-items: center;
         padding: 5px;
+        gap: 15px;
     }
     
     .thumbnail-gallery {
@@ -347,4 +372,42 @@ footer {
         font-size: 1.8rem;
         padding: 15px;
     }
+    
+    .car h3 {
+        font-size: 1.3rem;
+    }
+    
+    .car p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Special styling for very small screens */
+@media (max-width: 360px) {
+    nav a {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+    }
+    
+    nav {
+        gap: 4px;
+    }
+}
+
+/* Ensure horizontal scroll works well on mobile */
+nav::-webkit-scrollbar {
+    height: 4px;
+}
+
+nav::-webkit-scrollbar-track {
+    background: #222;
+}
+
+nav::-webkit-scrollbar-thumb {
+    background: #f00;
+    border-radius: 2px;
+}
+
+nav::-webkit-scrollbar-thumb:hover {
+    background: #c00;
 }
