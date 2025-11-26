@@ -23,14 +23,16 @@
  
  
     <div class="container">
+
         <h2>Get in Touch</h2>
-     <form action="contact.php" method="post">
-    <label for="name">Name:</label><br>
-    <input type="text" id="name" name="name" required><br>
-    <label for="email">Email:</label><br>
-    <input type="email" id="email" name="email" required><br>
-    <label for="message">Message:</label><br>
-    <textarea id="message" name="message" rows="5" required></textarea><br>
+
+   <form action="contact_process.php" method="post">
+    <label for="customer_name">Name:</label><br>
+    <input type="text" id="customer_name" name="customer_name" required><br>
+    <label for="customer_email">Email:</label><br>
+    <input type="email" id="customer_email" name="customer_email" required><br>
+    <label for="customer_message">Message:</label><br>
+    <textarea id="customer_message" name="customer_message" rows="5" required></textarea><br>
     <button type="submit">Submit</button>
 </form>
 
