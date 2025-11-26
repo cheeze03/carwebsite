@@ -1,143 +1,332 @@
-/* General Body Styling */ 
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #000; /* Black background for a sleek look */
-    color: #fff; /* White text for readability */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    min-height: 100vh;
+    background-color: #000;
+    color: #fff;
 }
 
-/* Header Styling */
 header {
     text-align: center;
-    padding: 20px;
-    background-color: #222; /* Dark gray */
-    width: 100%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    padding: 25px;
+    background: #111;
 }
 
 header h1 {
+    color: #ff4500;
     margin: 0;
     font-size: 2.5rem;
-    color: #fff;
 }
 
-/* Navigation Bar */
+/* Enhanced Navigation Bar - NO ORANGE HIGHLIGHT */
 nav {
-    background-color: #333;
-    padding: 10px 0;
-    width: 100%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #222, #444);
+    padding: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid #ff4500;
+    position: relative;
+    z-index: 1000;
 }
 
-nav a {
+.nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-links li {
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
     color: #fff;
     text-decoration: none;
-    margin: 0 15px;
-    font-size: 1.2rem;
+    padding: 18px 25px;
+    display: block;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    position: relative;
+    border-radius: 0;
+    margin: 0;
 }
 
-nav a:hover {
-    text-decoration: underline;
-    color: #f00; /* Accent color for hover effect */
+/* REMOVED ALL HOVER EFFECTS THAT CAUSE ORANGE */
+.nav-links a:hover {
+    color: #fff; /* Keep text white on hover */
+    background: rgba(255, 255, 255, 0.1); /* Light grey background instead of orange */
+    transform: translateY(0);
 }
 
-/* Container Styling */
-.container, .about-owner, .owner-contact {
-    background-color: #111;
-    border: 1px solid #444;
+/* REMOVED THE ORANGE UNDERLINE ANIMATION */
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: transparent; /* Changed from #ff4500 to transparent */
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-links a:hover::before {
+    width: 0; /* No underline on hover */
+}
+
+/* Background image for contact section */
+.container {
+    background: url("supercar-bg.jpg") center/cover no-repeat;
+    min-height: 70vh;
+    padding: 50px 20px;
+}
+
+/* Contact form styling */
+.container form {
+    background: rgba(0, 0, 0, 0.85);
+    padding: 30px;
+    max-width: 500px;
+    margin: 0 auto 40px auto;
     border-radius: 10px;
-    padding: 20px;
-    margin: 20px 0;
-    width: 80%;
-    max-width: 600px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-}
-
-h2 {
-    color: #f00; /* Ferrari red for headings */
-    margin-bottom: 15px;
-}
-
-/* ✅ Form Styling (center aligned inputs) */
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centers form fields horizontally */
-    justify-content: center;
-    gap: 15px;
-}
-
-/* Label Styling */
-label {
-    font-size: 1rem;
-    margin-bottom: 5px;
-    align-self: flex-start;
-    margin-left: 10%; /* aligns labels with inputs */
-}
-
-/* Input & Textarea Styling */
-input, textarea {
-    width: 80%; /* 80% of container width */
-    max-width: 400px;
-    padding: 10px;
+    box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
     border: 1px solid #333;
-    border-radius: 5px;
-    font-size: 1rem;
-    background-color: #222;
-    color: #fff;
-    text-align: left;
 }
 
-/* Button Styling */
-button {
-    width: 150px;
-    padding: 10px 15px;
+.container h2 {
+    color: #ff4500;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #ff4500;
+    padding-bottom: 10px;
+}
+
+/* Form inputs */
+.container input,
+.container textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 15px 0;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background: #222;
+    color: white;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.container input:focus,
+.container textarea:focus {
+    outline: none;
+    border-color: #ff4500;
+    box-shadow: 0 0 8px rgba(255, 69, 0, 0.3);
+    background: #333;
+}
+
+.container textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.container label {
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Submit button */
+.container button {
+    background: linear-gradient(135deg, #ff4500, #ff6b35);
+    color: white;
+    padding: 15px 30px;
     border: none;
     border-radius: 5px;
-    background-color: #f00;
-    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
     cursor: pointer;
-    font-size: 1rem;
+    width: 100%;
     margin-top: 10px;
-    align-self: center;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-button:hover {
-    background-color: #c00; /* Darker red for hover effect */
+.container button:hover {
+    background: linear-gradient(135deg, #e03d00, #ff5a2b);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4);
 }
 
-/* Contact Details */
+.container button:active {
+    transform: translateY(0);
+}
+
+/* About owner and contact details sections */
+.about-owner,
+.owner-contact {
+    background: rgba(30, 30, 30, 0.9);
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 800px;
+    border-radius: 10px;
+    border: 1px solid #444;
+    box-shadow: 0 0 15px rgba(255, 69, 0, 0.2);
+}
+
+.about-owner h2,
+.owner-contact h2 {
+    color: #ff4500;
+    border-bottom: 2px solid #ff4500;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.about-owner p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
 .owner-contact ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
 }
 
 .owner-contact li {
-    margin: 10px 0;
+    padding: 10px 0;
+    border-bottom: 1px solid #444;
+    font-size: 1rem;
+}
+
+.owner-contact li:last-child {
+    border-bottom: none;
+}
+
+.owner-contact strong {
+    color: #ff4500;
 }
 
 .owner-contact a {
-    color: #f00;
+    color: #ff4500;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .owner-contact a:hover {
+    color: #ff6b35;
     text-decoration: underline;
 }
 
-/* Footer Styling */
+/* Footer */
 footer {
-    background-color: #222;
-    padding: 20px;
-    font-size: 1rem;
-    width: 100%;
+    background: #111;
     color: #fff;
-    margin-top: 20px;
     text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-top: 2px solid #ff4500;
+}
+
+/* Placeholder styling */
+::placeholder {
+    color: #888;
+    opacity: 1;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 15px;
+    }
+    
+    .container form {
+        padding: 20px;
+        margin: 0 10px 30px 10px;
+    }
+    
+    .about-owner,
+    .owner-contact {
+        padding: 20px;
+        margin: 20px 15px;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        padding: 5px;
+    }
+    
+    .nav-links a {
+        padding: 15px 20px;
+        margin: 2px;
+        font-size: 14px;
+        flex: 1;
+        min-width: 110px;
+        text-align: center;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .nav-links a {
+        padding: 12px 15px;
+        margin: 1px;
+        font-size: 13px;
+        min-width: 90px;
+    }
+}
+
+/* Animation for sections */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container form,
+.about-owner,
+.owner-contact {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.about-owner {
+    animation-delay: 0.2s;
+}
+
+.owner-contact {
+    animation-delay: 0.4s;
+}
+
+/* Form focus effects */
+.container input:focus::placeholder,
+.container textarea:focus::placeholder {
+    color: #bbb;
+}
+
+/* Selection styling */
+::selection {
+    background: rgba(255, 69, 0, 0.3);
+    color: white;
 }
