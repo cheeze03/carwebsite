@@ -28,7 +28,7 @@
                     <img src="gt-500-ford-eleanor-ford-shelby-wallpaper-preview.jpg" alt="Ford Mustang Front" class="thumbnail active">
                     <img src="Alexanders-Watermark-layer_SQUARE-New-Logo-43.jpg" alt="Ford Mustang Side" class="thumbnail">
                     <img src="1967-ford-mustang-eleanor-gt.jpg" alt="Ford Mustang Interior" class="thumbnail">
-                     <img src="1967+Eleanor-1.jpg" alt="Ford Mustang Interior" class="thumbnail">
+                    <img src="1967+Eleanor-1.jpg" alt="Ford Mustang Interior" class="thumbnail">
                 </div>
             </div>
             <p class="car-description">
@@ -53,7 +53,7 @@
                     <img src="wp5005084.jpg" alt="Lamborghini Front" class="thumbnail active">
                     <img src="LAMBORGHINIAventadorLP700-4-4511_4.jpg" alt="Lamborghini Side" class="thumbnail">
                     <img src="Lamborghini-aventador-LP700-4-x-Novitec-NL47.jpg" alt="Lamborghini Interior" class="thumbnail">
-                     <img src="6959983.jpg" alt="Lamborghini Interior" class="thumbnail">
+                    <img src="6959983.jpg" alt="Lamborghini Interior" class="thumbnail">
                 </div>
             </div>
             <p class="car-description">
@@ -68,17 +68,16 @@
             <p><a class="test-drive-link" href="booking.html?car=Lamborghini Aventador">Pay to test drive this car</a></p>
         </div>
         
-         <!-- Rolls Royce -->
+        <!-- Rolls Royce -->
         <div class="car" id="Rolls Royce">
             <h3>Rolls Royce Ghost Black Badge</h3>
             <div class="car-gallery">
                 <img src="rolls royce ghost black badge .jpg" alt="Rolls Royce Ghost" class="main-image">
-
                 <div class="thumbnail-gallery">
                     <img src="rolls-royce-ghost-black-badge-2019-front-ft-3840x2160.jpg" alt="Rolls Royce Front" class="thumbnail active">
                     <img src="Rolls-Royce-Motor-Cars-London-2.jpg" alt="Rolls Royce Side" class="thumbnail">
                     <img src="R.jpg" alt="Rolls Royce Interior" class="thumbnail">
-                     <img src="2016-rolls-royce-ghost-black-badge.jpg" alt="Rolls Royce Interior" class="thumbnail">
+                    <img src="2016-rolls-royce-ghost-black-badge.jpg" alt="Rolls Royce Interior" class="thumbnail">
                 </div>
             </div>
             <p class="car-description">
@@ -128,7 +127,7 @@
                     <img src="2005-Porsche-Carrera-GT1423554_-2048x1360.jpg" alt="Porsche Front" class="thumbnail active">
                     <img src="porsche-carrera-gt-porsche-carrera-gt-30.jpg" alt="Porsche Side" class="thumbnail">
                     <img src="5g8a9574.jpg" alt="Porsche Interior" class="thumbnail">
-                     <img src="porsche-carrera-gt-porsche-carrera-gt-32.jpg" alt="Porsche Interior" class="thumbnail">
+                    <img src="porsche-carrera-gt-porsche-carrera-gt-32.jpg" alt="Porsche Interior" class="thumbnail">
                 </div>
             </div>
             <p class="car-description">
@@ -152,7 +151,7 @@
                     <img src="Used-2021-Bentley-Bentayga-Speed-1737089603.jpg" alt="Bentley Front" class="thumbnail active">
                     <img src="Used-2021-Bentley-Bentayga-Speed.jpg" alt="Bentley Side" class="thumbnail">
                     <img src="Used-2021-Bentley-Bentayga-Speed (1).jpg" alt="Bentley Interior" class="thumbnail">
-                     <img src="Used-2021-Bentley-Bentayga-Speed-1673367338.jpg" alt="Bentley Interior" class="thumbnail">
+                    <img src="Used-2021-Bentley-Bentayga-Speed-1673367338.jpg" alt="Bentley Interior" class="thumbnail">
                 </div>
             </div>
             <p class="car-description">
@@ -180,40 +179,27 @@
     </footer>
 
     <script>
-        // Gallery functionality
+        // Gallery functionality - FIXED: Each car only shows its own images
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize all car galleries
             const cars = document.querySelectorAll('.car');
-            const allImages = []; // Store all images for modal navigation
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalCaption = document.getElementById('modalCaption');
+            const modalClose = document.getElementById('modalClose');
+            const modalPrev = document.getElementById('modalPrev');
+            const modalNext = document.getElementById('modalNext');
             
+            let currentCarImages = [];
+            let currentImageIndex = 0;
+            
+            // Initialize all car galleries
             cars.forEach(car => {
                 const mainImage = car.querySelector('.main-image');
                 const thumbnails = car.querySelectorAll('.thumbnail');
                 const carTitle = car.querySelector('h3').textContent;
                 
-                // Add all images from this car to the collection
-                const carImages = [];
-                
-                // Add main image
-                carImages.push({
-                    element: mainImage,
-                    src: mainImage.src,
-                    alt: mainImage.alt,
-                    title: carTitle
-                });
-                
-                // Add thumbnails
-                thumbnails.forEach(thumb => {
-                    carImages.push({
-                        element: thumb,
-                        src: thumb.src,
-                        alt: thumb.alt,
-                        title: carTitle
-                    });
-                });
-                
-                // Add to global collection
-                allImages.push(...carImages);
+                // Get all images for this specific car
+                const carImages = [mainImage, ...thumbnails];
                 
                 // Add click events to thumbnails
                 thumbnails.forEach(thumb => {
@@ -228,63 +214,43 @@
                     });
                 });
                 
-                // Add click event to main image for modal view
-                mainImage.addEventListener('click', function() {
-                    openModal(this.src, carTitle);
-                });
-                
-                // Also allow clicking on thumbnails to open modal
-                thumbnails.forEach(thumb => {
-                    thumb.addEventListener('click', function() {
-                        openModal(this.src, carTitle);
+                // Add click event to main image and thumbnails for modal view
+                carImages.forEach(img => {
+                    img.addEventListener('click', function() {
+                        openModalForCar(carImages, this.src, carTitle);
                     });
                 });
             });
             
-            // Modal functionality
-            const modal = document.getElementById('imageModal');
-            const modalImage = document.getElementById('modalImage');
-            const modalCaption = document.getElementById('modalCaption');
-            const modalClose = document.getElementById('modalClose');
-            const modalPrev = document.getElementById('modalPrev');
-            const modalNext = document.getElementById('modalNext');
-            
-            let currentImageIndex = 0;
-            
-            function openModal(src, caption) {
+            function openModalForCar(carImages, src, caption) {
                 modal.style.display = 'flex';
                 modalImage.src = src;
                 modalCaption.textContent = caption;
                 
-                // Find the index of the clicked image
-                currentImageIndex = allImages.findIndex(img => img.src === src);
-                
-                console.log('Opening modal:', {
-                    src: src,
-                    caption: caption,
-                    index: currentImageIndex,
-                    totalImages: allImages.length
-                });
+                // Set current car images and find the clicked image index
+                currentCarImages = carImages;
+                currentImageIndex = Array.from(currentCarImages).findIndex(img => img.src === src);
             }
             
             function closeModal() {
                 modal.style.display = 'none';
+                currentCarImages = [];
             }
             
             function showNextImage() {
-                if (allImages.length === 0) return;
+                if (currentCarImages.length === 0) return;
                 
-                currentImageIndex = (currentImageIndex + 1) % allImages.length;
-                modalImage.src = allImages[currentImageIndex].src;
-                modalCaption.textContent = allImages[currentImageIndex].title;
+                currentImageIndex = (currentImageIndex + 1) % currentCarImages.length;
+                modalImage.src = currentCarImages[currentImageIndex].src;
+                modalCaption.textContent = currentCarImages[currentImageIndex].closest('.car').querySelector('h3').textContent;
             }
             
             function showPrevImage() {
-                if (allImages.length === 0) return;
+                if (currentCarImages.length === 0) return;
                 
-                currentImageIndex = (currentImageIndex - 1 + allImages.length) % allImages.length;
-                modalImage.src = allImages[currentImageIndex].src;
-                modalCaption.textContent = allImages[currentImageIndex].title;
+                currentImageIndex = (currentImageIndex - 1 + currentCarImages.length) % currentCarImages.length;
+                modalImage.src = currentCarImages[currentImageIndex].src;
+                modalCaption.textContent = currentCarImages[currentImageIndex].closest('.car').querySelector('h3').textContent;
             }
             
             // Event listeners for modal
@@ -329,14 +295,7 @@
                     }
                 });
             });
-            
-            // Debug: Log all collected images
-            console.log('All images collected:', allImages);
         });
     </script>
 </body>
 </html>
-
-
-
-
