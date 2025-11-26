@@ -77,7 +77,7 @@
                     <img src="rolls-royce-ghost-black-badge-2019-front-ft-3840x2160.jpg" alt="Rolls Royce Front" class="thumbnail active">
                     <img src="Rolls-Royce-Motor-Cars-London-2.jpg" alt="Rolls Royce Side" class="thumbnail">
                     <img src="R.jpg" alt="Rolls Royce Interior" class="thumbnail">
-                    <img src="2016-rolls-royce-ghost-black-badge.jpg" alt="Rolls Royce Interior" class="thumbnail">
+                    <img src="2016-rolls-royce-ghost-black-badge.jpg" alt="Rolls Royce Rear" class="thumbnail">
                 </div>
             </div>
             <p class="car-description">
@@ -97,21 +97,21 @@
         <div class="car" id="Mercedes Benz">
             <h3>Mercedes Benz E63s AMG</h3>
             <div class="car-gallery">
-                <img src="e63s amg.jpg" alt="Mercedes Benz" class="main-image">
+                <img src="2017-Mercedes-Benz-E63s-AMG-Grey-7261-1.jpg" alt="Mercedes Benz" class="main-image">
                 <div class="thumbnail-gallery">
-                    <img src="Mercedes-e63-silver-27.jpg" alt="Mercedes Front" class="thumbnail active">
-                    <img src="Mercedes-e63-silver-2.jpg" alt="Mercedes Side" class="thumbnail">
-                    <img src="Mercedes-e63-silver-29.jpg" alt="Mercedes Interior" class="thumbnail">
-                    <img src="Mercedes-e63-silver-28.jpg" alt="Mercedes Interior" class="thumbnail">
+                    <img src="2017-Mercedes-Benz-E63s-AMG-Grey-7261-2.jpg" alt="Mercedes Front" class="thumbnail active">
+                    <img src="2017-Mercedes-Benz-E63s-AMG-Grey-7261-8.jpg" alt="Mercedes Side" class="thumbnail">
+                    <img src="2017-Mercedes-Benz-E63s-AMG-Grey-7261-4.jpg" alt="Mercedes Interior" class="thumbnail">
+                    <img src="2017-Mercedes-Benz-E63s-AMG-Grey-7261-6.jpg" alt="Mercedes Interior" class="thumbnail">
                 </div>
             </div>
             <p class="car-description">
-                The 2014 Mercedes-Benz E63 S AMG is a high-performance luxury sedan powered by a 5.5-liter twin-turbocharged V8 engine producing up to 577 horsepower.
-                It combines blistering acceleration with refined comfort, reaching 0–100 km/h in just 3.6 seconds.
-                Its AMG-tuned 4MATIC all-wheel drive ensures superb traction and handling in all conditions.
+                The 2017 Mercedes-Benz E63S AMG is a high-performance luxury sedan featuring a 4.0-liter twin-turbo V8 engine
+                 that produces 612 horsepower and 627 lb-ft of torque. It is equipped with a 9-speed automatic AMG SPEEDSHIFT MCT
+                  transmission and offers all-wheel drive through the AMG 4MATIC+ system.
                 <span class="more-text">
-                    Aggressive styling, a sporty exhaust note, and handcrafted AMG details make it both elegant and ferocious.
-                    The E63 S stands as a perfect fusion of executive sophistication and raw, race-bred power.
+                The vehicle boasts a top speed of 180 mph and accelerates from 0 to 60 mph in just 3.4 seconds. Its design includes 
+                a striking radiator grille and a luxurious interior, making it a blend of sporty performance and comfort. 
                 </span>
             </p>
             <button class="read-more">Read More</button>
@@ -179,7 +179,7 @@
     </footer>
 
     <script>
-        // Gallery functionality - FIXED: Each car only shows its own images
+        // Gallery functionality - FIXED: No duplicate images and main image doesn't change when browsing modal
         document.addEventListener('DOMContentLoaded', function() {
             const cars = document.querySelectorAll('.car');
             const modal = document.getElementById('imageModal');
@@ -198,25 +198,50 @@
                 const thumbnails = car.querySelectorAll('.thumbnail');
                 const carTitle = car.querySelector('h3').textContent;
                 
-                // Get all images for this specific car
-                const carImages = [mainImage, ...thumbnails];
+                // Create unique array of images for modal (avoid duplicates)
+                const uniqueImages = new Set();
+                const carImages = [];
                 
-                // Add click events to thumbnails
+                // Add main image first
+                if (!uniqueImages.has(mainImage.src)) {
+                    carImages.push(mainImage);
+                    uniqueImages.add(mainImage.src);
+                }
+                
+                // Add thumbnails that are different from main image
                 thumbnails.forEach(thumb => {
-                    thumb.addEventListener('click', function() {
-                        // Update main image
-                        mainImage.src = this.src;
-                        mainImage.alt = this.alt;
-                        
-                        // Update active thumbnail
-                        thumbnails.forEach(t => t.classList.remove('active'));
-                        this.classList.add('active');
+                    if (!uniqueImages.has(thumb.src)) {
+                        carImages.push(thumb);
+                        uniqueImages.add(thumb.src);
+                    }
+                });
+                
+                // Add click events to thumbnails - ONLY for changing main image
+                thumbnails.forEach(thumb => {
+                    thumb.addEventListener('click', function(e) {
+                        // Only update main image if this is a direct click (not from modal)
+                        if (!e.isModalTrigger) {
+                            // Update main image
+                            mainImage.src = this.src;
+                            mainImage.alt = this.alt;
+                            
+                            // Update active thumbnail
+                            thumbnails.forEach(t => t.classList.remove('active'));
+                            this.classList.add('active');
+                        }
                     });
                 });
                 
-                // Add click event to main image and thumbnails for modal view
-                carImages.forEach(img => {
-                    img.addEventListener('click', function() {
+                // Add click event to main image for modal view
+                mainImage.addEventListener('click', function() {
+                    openModalForCar(carImages, this.src, carTitle);
+                });
+                
+                // Add separate click event to thumbnails for modal view only
+                thumbnails.forEach(thumb => {
+                    thumb.addEventListener('click', function(e) {
+                        // Mark this as a modal trigger to prevent main image update
+                        e.isModalTrigger = true;
                         openModalForCar(carImages, this.src, carTitle);
                     });
                 });
@@ -229,7 +254,7 @@
                 
                 // Set current car images and find the clicked image index
                 currentCarImages = carImages;
-                currentImageIndex = Array.from(currentCarImages).findIndex(img => img.src === src);
+                currentImageIndex = currentCarImages.findIndex(img => img.src === src);
             }
             
             function closeModal() {
