@@ -2,28 +2,28 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #000;
-    color: #fff;
+    background-color: #000000;
+    color: #fcfbfb;
 }
 
 header {
     text-align: center;
     padding: 25px;
-    background: #111;
+    background: #070404;
 }
 
 header h1 {
-    color: #ff4500;
+    color: #fcfbfb;
     margin: 0;
     font-size: 2.5rem;
 }
 
 /* Fixed Horizontal Navigation Bar - CENTERED TEXT */
 nav {
-    background: linear-gradient(135deg, #222, #444);
+    background: #4b4a4a;
     padding: 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    border-bottom: 2px solid #ff4500;
+    border-bottom: 2px solid #4b4a4a;
     position: relative;
     z-index: 1000;
 }
@@ -47,7 +47,7 @@ nav {
 }
 
 .nav-links a {
-    color: #fff;
+    color: white;
     text-decoration: none;
     padding: 18px 25px;
     display: flex;
@@ -62,6 +62,7 @@ nav {
 }
 
 .nav-links a:hover {
+    color: #cccccc;
     background: rgba(255, 255, 255, 0.1);
 }
 
@@ -74,21 +75,21 @@ nav {
 
 /* Contact form styling */
 .container form {
-    background: rgba(0, 0, 0, 0.85);
+    background: rgb(31, 29, 29);
     padding: 30px;
     max-width: 500px;
     margin: 0 auto 40px auto;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
-    border: 1px solid #333;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #4b4a4a;
 }
 
 .container h2 {
-    color: #ff4500;
+    color: #fcfbfb;
     text-align: center;
     margin-bottom: 25px;
     font-size: 1.8rem;
-    border-bottom: 2px solid #ff4500;
+    border-bottom: 2px solid #4b4a4a;
     padding-bottom: 10px;
 }
 
@@ -99,9 +100,9 @@ nav {
     padding: 12px;
     margin: 8px 0 15px 0;
     border-radius: 5px;
-    border: 1px solid #555;
-    background: #222;
-    color: white;
+    border: 1px solid #4b4a4a;
+    background: #2a2a2a;
+    color: #fcfbfb;
     font-size: 14px;
     box-sizing: border-box;
     transition: all 0.3s ease;
@@ -110,8 +111,8 @@ nav {
 .container input:focus,
 .container textarea:focus {
     outline: none;
-    border-color: #ff4500;
-    box-shadow: 0 0 8px rgba(255, 69, 0, 0.3);
+    border-color: #cccccc;
+    box-shadow: 0 0 8px rgba(204, 204, 204, 0.3);
     background: #333;
 }
 
@@ -121,7 +122,7 @@ nav {
 }
 
 .container label {
-    color: #fff;
+    color: #fcfbfb;
     font-weight: bold;
     margin-bottom: 5px;
     display: block;
@@ -129,7 +130,7 @@ nav {
 
 /* Submit button */
 .container button {
-    background: linear-gradient(135deg, #ff4500, #ff6b35);
+    background: #4b4a4a;
     color: white;
     padding: 15px 30px;
     border: none;
@@ -145,9 +146,9 @@ nav {
 }
 
 .container button:hover {
-    background: linear-gradient(135deg, #e03d00, #ff5a2b);
+    background: #5c5b5b;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
 .container button:active {
@@ -157,19 +158,19 @@ nav {
 /* About owner and contact details sections */
 .about-owner,
 .owner-contact {
-    background: rgba(30, 30, 30, 0.9);
+    background: rgb(31, 29, 29);
     padding: 30px;
     margin: 30px auto;
     max-width: 800px;
-    border-radius: 10px;
-    border: 1px solid #444;
-    box-shadow: 0 0 15px rgba(255, 69, 0, 0.2);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #4b4a4a;
 }
 
 .about-owner h2,
 .owner-contact h2 {
-    color: #ff4500;
-    border-bottom: 2px solid #ff4500;
+    color: #fcfbfb;
+    border-bottom: 2px solid #4b4a4a;
     padding-bottom: 10px;
     margin-bottom: 20px;
     font-size: 1.5rem;
@@ -188,7 +189,7 @@ nav {
 
 .owner-contact li {
     padding: 10px 0;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid #4b4a4a;
     font-size: 1rem;
 }
 
@@ -197,28 +198,28 @@ nav {
 }
 
 .owner-contact strong {
-    color: #ff4500;
+    color: #fcfbfb;
 }
 
 .owner-contact a {
-    color: #ff4500;
+    color: #cccccc;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .owner-contact a:hover {
-    color: #ff6b35;
+    color: #ffffff;
     text-decoration: underline;
 }
 
 /* Footer */
 footer {
-    background: #111;
-    color: #fff;
+    background: #222;
+    color: white;
     text-align: center;
     padding: 20px;
     margin-top: 40px;
-    border-top: 2px solid #ff4500;
+    border-top: 2px solid #4b4a4a;
 }
 
 /* Mobile Responsive */
