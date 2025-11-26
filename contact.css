@@ -18,7 +18,7 @@ header h1 {
     font-size: 2.5rem;
 }
 
-/* Fixed Horizontal Navigation Bar */
+/* Fixed Horizontal Navigation Bar - CENTERED TEXT */
 nav {
     background: linear-gradient(135deg, #222, #444);
     padding: 0;
@@ -35,22 +35,30 @@ nav {
     list-style: none;
     margin: 0;
     padding: 0;
+    width: 100%;
 }
 
 .nav-links li {
     margin: 0;
     padding: 0;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .nav-links a {
     color: #fff;
     text-decoration: none;
-    padding: 15px 20px;
-    display: block;
+    padding: 18px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: bold;
     font-size: 16px;
     transition: all 0.3s ease;
+    text-align: center;
+    height: 100%;
+    min-height: 50px;
 }
 
 .nav-links a:hover {
@@ -225,18 +233,27 @@ footer {
     
     .nav-links li {
         flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .nav-links a {
-        padding: 12px 15px;
+        padding: 15px 20px;
         font-size: 14px;
         white-space: nowrap;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
     }
 }
 
 @media (max-width: 480px) {
     .nav-links a {
-        padding: 10px 12px;
+        padding: 12px 15px;
         font-size: 13px;
+        min-height: 35px;
     }
 }
